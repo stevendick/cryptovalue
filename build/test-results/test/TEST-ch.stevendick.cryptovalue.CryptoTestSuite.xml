@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.stevendick.cryptovalue.CryptoTestSuite" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-01-13T21:37:05" hostname="DESKTOP-G678EGH" time="0.273">
+  <properties/>
+  <testcase name="totalValue()" classname="ch.stevendick.cryptovalue.CryptoTestSuite" time="0.011"/>
+  <testcase name="readPositionFromString()" classname="ch.stevendick.cryptovalue.CryptoTestSuite" time="0.002"/>
+  <testcase name="httpGet()" classname="ch.stevendick.cryptovalue.CryptoTestSuite" time="0.257"/>
+  <testcase name="readPositionsFromClasspathFile()" classname="ch.stevendick.cryptovalue.CryptoTestSuite" time="0.001"/>
+  <testcase name="priceToBigDecimal()" classname="ch.stevendick.cryptovalue.CryptoTestSuite" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
