@@ -5,6 +5,13 @@ Windows: `.\gradlew build`
 
 Non-Windows: `./gradlew build`
 
+# Test Results
+After the build, the test results can be found in:
+
+Windows: `build\reports\tests\test`
+
+Non-Windows: `build/reports/tests/test`
+
 # Running
 The compiled JAR is configured with the main class. To run, go to the command line and change to the cryptovalue project directory:
 
