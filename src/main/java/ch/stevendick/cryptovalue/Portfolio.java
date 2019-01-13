@@ -7,9 +7,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * A depot holds zero or more positions across multiple currencies
+ * A portfolio holds zero or more positions across multiple currencies
  */
-public class Portfolio {
+class Portfolio {
 
     private final PriceSource priceSource;
     private final Map<String, Position> positions;
@@ -17,11 +17,11 @@ public class Portfolio {
     /**
      * Construct a portfolio with a price source and positions
      *
-     * @param priceSource
-     * @param positions
+     * @param priceSource price source
+     * @param positions positions
      */
 
-    public Portfolio(PriceSource priceSource, Set<Position> positions) {
+    Portfolio(PriceSource priceSource, Set<Position> positions) {
         this.priceSource = priceSource;
         this.positions = positions.stream()
                 .collect(Collectors.toMap(Position::getSymbol, Function.identity()));
@@ -32,7 +32,7 @@ public class Portfolio {
      * @return A Map of currencies to positions in Euroes
      */
 
-    public Map<String, Position> getPositionsInEuros() {
+    Map<String, Position> getPositionsInEuros() {
         return positions.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> toEuro(entry.getValue())));
     }
@@ -42,7 +42,7 @@ public class Portfolio {
      * @return A {@link BigDecimal} representing the portfolio value in Euros
      */
 
-    public BigDecimal getEuroValue() {
+    BigDecimal getEuroValue() {
         return positions.values().stream()
                 .filter(Position::isNotZero)
                 .map(this::toEuro)
@@ -53,16 +53,19 @@ public class Portfolio {
     /**
      * Convert a position to Euros
      *
-     * @param currency
+     * @param currency the currency
      * @return the {@link Position} converted to Euros
      */
 
     private Position toEuro(Position currency) {
-        if(currency.getSymbol() == Position.EUR) return currency;
+        if(currency.getSymbol().equals(Position.EUR)) return currency;
         return currency.convertedTo(Position.EUR, priceSource.getPrice(currency.getSymbol()));
     }
 
-    public void print() {
+    /**
+     * Prints out to console the value of the portfolio in Euros
+     */
+    void print() {
         System.out.println("Portfolio valuation in Euro");
         getPositionsInEuros().entrySet().stream()
                 .map(entry -> entry.getKey() + " = " + entry.getValue().getAmount())

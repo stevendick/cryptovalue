@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * A source of crypto currency holdings
  */
-public interface PositionSource {
+interface PositionSource {
 
     /**
      * Returns

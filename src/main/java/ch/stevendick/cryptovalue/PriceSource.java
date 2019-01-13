@@ -5,11 +5,11 @@ import java.math.BigDecimal;
 /**
  * A source of prices
  */
-public interface PriceSource {
+interface PriceSource {
 
     /**
      * Returns the price for a symbol
-     * @param symbol
+     * @param symbol the symbol you want a price for
      * @return A price for a symbol
      */
     BigDecimal getPrice(String symbol);

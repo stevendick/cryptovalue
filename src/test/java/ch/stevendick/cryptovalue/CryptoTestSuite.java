@@ -81,7 +81,7 @@ class CryptoTestSuite {
 
     @DisplayName("Read positions from a text file on the classpath")
     @Test
-    void readPositionsFromClasspathFile() throws IOException {
+    void readPositionsFromClasspathFile() {
         //given
         PositionSource source = new TextPositionSource("bobs_crypto.txt");
 

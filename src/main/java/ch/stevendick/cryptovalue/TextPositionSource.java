@@ -9,19 +9,21 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.nio.file.Files.readAllLines;
 
+/**
+ * Reads positions from a text file
+ */
 public class TextPositionSource implements PositionSource {
 
     private Set<Position> positions;
 
     /**
      * Construct a depot source from a text file on the classpath
-     * @param
+     * @param sourceFileName the source file name
      */
-    public TextPositionSource(String sourceFileName) throws IOException {
+    TextPositionSource(String sourceFileName) {
         List<String> source = new BufferedReader(
                 new InputStreamReader(ClassLoader.getSystemResourceAsStream(sourceFileName)))
                 .lines()
@@ -31,8 +33,8 @@ public class TextPositionSource implements PositionSource {
     }
 
     /**
-     * Construct a depot source from a text file
-     * @param source
+     * Construct a depot source from a text file {@link Path}
+     * @param source the source {@link Path}
      */
     public TextPositionSource(Path source) throws IOException {
         if(!Files.isRegularFile(source)) {
@@ -42,7 +44,7 @@ public class TextPositionSource implements PositionSource {
         parse(readAllLines(source));
     }
 
-    public TextPositionSource(List<String> source) {
+    TextPositionSource(List<String> source) {
         parse(source);
     }
 
